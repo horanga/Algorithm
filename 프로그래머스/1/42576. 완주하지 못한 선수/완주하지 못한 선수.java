@@ -12,7 +12,7 @@ public class Solution {
 
         Map<String, Integer> completerFrequencyMap = new HashMap<>();
         for(String completer : completion){
-            completerFrequencyMap.compute(completer, (k, v)->(v==null)? 1:++v);
+            completerFrequencyMap.compute(completer, (name, frequency)->(frequency==null)? 1:++frequency);
         }
         
         for(String runner: participant){
