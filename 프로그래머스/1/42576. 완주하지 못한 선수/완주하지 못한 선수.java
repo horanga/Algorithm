@@ -12,10 +12,12 @@ public class Solution {
 
         Map<String, Integer> completerFrequencyMap = new HashMap<>();
         for(String completer : completion){
+            Objects.requireNonNull(completer, "completer 배열의 요소는 null일 수 없습니다.");
             completerFrequencyMap.compute(completer, (name, frequency)->(frequency==null)? 1:++frequency);
         }
         
         for(String runner: participant){
+            Objects.requireNonNull(runner, "participant 배열의 요소는 null일 수 없습니다.");
             if (completerFrequencyMap.containsKey(runner)) {
                completerFrequencyMap.put(runner, completerFrequencyMap.get(runner)-1);
                 if(completerFrequencyMap.get(runner)==0){
