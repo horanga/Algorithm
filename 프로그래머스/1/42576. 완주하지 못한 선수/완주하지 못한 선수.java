@@ -10,22 +10,22 @@ public class Solution {
             throw new IllegalArgumentException("입력값은 null일 수 없습니다.");
         }
 
-        Map<String, Integer> completionRunner = new HashMap<>();
-        for(String runner : completion){
-            completionRunner.compute(runner, (k, v)->(v==null)? 1:++v);
+        Map<String, Integer> completerFrequencyMap = new HashMap<>();
+        for(String completer : completion){
+            completerFrequencyMap.compute(completer, (k, v)->(v==null)? 1:++v);
         }
         
         for(String runner: participant){
-            if (completionRunner.containsKey(runner)) {
-                completionRunner.put(runner, completionRunner.get(runner)-1);
-                if(completionRunner.get(runner)==0){
-                    completionRunner.remove(runner);
+            if (completerFrequencyMap.containsKey(runner)) {
+               completerFrequencyMap.put(runner, completerFrequencyMap.get(runner)-1);
+                if(completerFrequencyMap.get(runner)==0){
+                    completerFrequencyMap.remove(runner);
                 }
             } else{
                 return runner;
             }
         }
         
-        return "  ";
+        return "";
     }
 }
