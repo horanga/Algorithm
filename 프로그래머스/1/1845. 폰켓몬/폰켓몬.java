@@ -4,9 +4,13 @@ import java.util.Set;
 public class Solution {
 
     public int solution(int[] nums) {
+
+        if(Objects.isNull(nums)){
+            throw new IllegalArgumentException("입력값은 null을 참조할 수 없습니다.");
+        }
+        
         int answer = 0;
         final int MAX_UNIQUE = nums.length / 2;
-
         Set<Integer> uniquePokemons = new HashSet<>();
         
         for(int i =0; i<nums.length&& answer < MAX_UNIQUE; i++){
@@ -17,4 +21,82 @@ public class Solution {
         }
         return answer;
     }
+
+
+//테스트코드
+
+ @Test
+    void 정확성_검사_정답(){
+        //given
+        int[] nums = {3, 3, 3, 3, 3, 3};
+        int expected= 1;
+
+        //when
+        int actual = solution(nums);
+
+        //then
+
+        Assertions.assertThat(actual).isEqualTo(expected);
+
+    }
+
+    @Test
+    void 정확성_검사_오답(){
+        //given
+        int[] nums = {3, 3, 3, 3, 3, 3};
+        int expected= 0;
+
+        //when
+        int actual = solution(nums);
+
+        //then
+
+        Assertions.assertThat(actual).isNotEqualTo(expected);
+
+    }
+
+    @Test
+    void 정확성_검사_빈배열(){
+        //given
+        int[] nums = {};
+        int expected= 0;
+
+        //when
+        int actual = solution(nums);
+
+        //then
+
+        Assertions.assertThat(actual).isEqualTo(expected);
+
+    }
+
+    @Test
+    void 최대치_초과(){
+        //given
+        int[] nums = {1,2,1,3,5,6,7};
+        int expected= 3;
+
+        //when
+        int actual = solution(nums);
+
+        //then
+
+        Assertions.assertThat(actual).isEqualTo(expected);
+
+    }
+
+    @Test
+    void null_참조처리(){
+        //when
+        IllegalArgumentException e =
+                org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class
+                ,()->solution(null));
+        //then
+
+        Assertions.assertThat(e.getMessage()).isEqualTo("입력값은 null을 참조할 수 없습니다.");
+
+    }
+
+
+}
 }
