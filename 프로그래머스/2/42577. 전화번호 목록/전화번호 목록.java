@@ -11,7 +11,9 @@ public class Solution {
 
         Set<String> phoneNumberSet = new HashSet<>();
         for(String phone: phone_book){
+           if (phone!=null) {
             phoneNumberSet.add(phone);
+           }
         }
 
         //substring(startIndex, endIndex)는 startIndex부터 endIndex-1까지를 반환한다. 그래서, 시작점은 j=1로 잡아주었다. 
