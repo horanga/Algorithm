@@ -25,7 +25,7 @@ public class Solution {
         return true;
 
 //테스트코드 
-                    @Test
+    @Test
     void 정확성검사(){
         //given
         String[] input = {"010222", "010", "112", "222"};
@@ -108,6 +108,7 @@ public class Solution {
     void 엣지케이스(){
         //given
         String[] input = {"12344", "12356", "345"};
+            //123이 공통되지만 둘다 서로의 접두어는 아닌 사례
 
         boolean expected = true;
         //when
