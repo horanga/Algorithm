@@ -93,18 +93,18 @@ public int solution(String[][] clothes) {
 
     }
 
-    @Test
+        @Test
     void 종류마다_옷한개(){
 
         //given
         String[][] input = {{"aa", "a"}, {"bb", "b"}, {"cc", "c"} , {"dd","d"}};
-        int expected = 7;
+        int expected = 15;
 
         //when
         int actual = solution(input);
 
         //then
-        Assertions.assertThat(actual).isNotEqualTo(expected);
+        Assertions.assertThat(actual).isEqualTo(expected);
 
 
     }
