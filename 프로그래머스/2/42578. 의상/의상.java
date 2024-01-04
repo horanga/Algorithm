@@ -8,20 +8,24 @@ public int solution(String[][] clothes) {
 
 
         for(int i =0; i<clothes.length; i++) {
+            
+            
             String clothType = clothes[i][1];
-            clothMap.compute(clothType, (type, occurrences) -> (occurrences == null) ? 1 : ++occurrences);
+            if (!clothType.equals("")){
+            clothMap.compute(clothType, (type, count) -> (count == null) ? 1 : ++count);
+            }
+            }
+
+        final int eachTypeNoClothing=1;
+        int combination=1;
+
+        for (int options : clothMap.values()) {
+            combination *= (options + eachTypeNoClothing);
         }
 
-        int noClothes=1;
-        int answer=1;
+        final int excludeAllNoClothing= 1;//모든 옷 종류에서 '아무것도 안 입음'을 선택한 케이스를 빼준다.
+        combination -= excludeAllNoClothing;
 
-        for(Map.Entry<String, Integer> entry: clothMap.entrySet()) {
-            answer *= (entry.getValue() + noClothes);
-        }
-
-        int withOutAllClothCase= 1;
-        answer -= withOutAllClothCase;
-
-        return answer;
+        return combination;
 }
 }
