@@ -160,6 +160,7 @@ public class Solution {
     }
     @Test
     void 곡플레이수동일(){
+        //한 장르에서 곡마다 플레이수가 동일할 때 사전순으로 순서
         //given
         String[] genres ={"classic", "pop", "classic", "k-pop", "pop", "classic", "k-pop"};
         int[] plays ={30, 10, 30, 70, 20, 30, 50};
