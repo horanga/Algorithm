@@ -34,4 +34,77 @@ public class Solution {
 
         return answer.stream().mapToInt(i->i).toArray();
     }
+
+ //테스트코드
+
+@Test
+    void 정상_작동(){
+        //given
+        int[] progress ={90, 80, 70};
+        int[] speeds = {2, 5, 15};
+        int[] expected ={3};
+        //when
+        int[] actual = solution(progress, speeds);
+
+        //then
+
+        Assertions.assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void 정상_작동_오답(){
+        //given
+        int[] progress ={90, 80, 70};
+        int[] speeds = {10, 10, 11};
+        int[] expected ={1, 2};
+        //when
+        int[] actual = solution(progress, speeds);
+
+        //then
+
+        Assertions.assertThat(actual).isNotEqualTo(expected);
+    }
+
+    @Test
+    void 속도_동일(){
+        //given
+        int[] progress ={70, 70, 70};
+        int[] speeds = {10, 10, 10};
+        int[] expected ={3};
+        //when
+        int[] actual = solution(progress, speeds);
+
+        //then
+
+        Assertions.assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void 요소_한개(){
+        //given
+        int[] progress ={70};
+        int[] speeds = {10};
+        int[] expected ={1};
+        //when
+        int[] actual = solution(progress, speeds);
+
+        //then
+
+        Assertions.assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void 빈_배열(){
+        //given
+        int[] progress ={};
+        int[] speeds = {};
+        int[] expected ={};
+        //when
+        int[] actual = solution(progress, speeds);
+
+        //then
+
+        Assertions.assertThat(actual).isEqualTo(expected);
+    }
+
 }
