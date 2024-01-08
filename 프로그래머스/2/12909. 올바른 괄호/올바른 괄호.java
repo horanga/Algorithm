@@ -3,7 +3,7 @@ import java.util.*;
 class Solution {
   static boolean solution(String s) {
 
-        if(s==null && s.length()%2!=0){//(와 )가 한 세트씩 필요하기 때문에 String의 길이는 2의 배수여야 한다.
+        if(s==null || s.length()%2!=0){//(와 )가 한 세트씩 필요하기 때문에 String의 길이는 2의 배수여야 한다.
             return false;
         }
 
