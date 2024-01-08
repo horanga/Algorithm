@@ -21,6 +21,6 @@ class Solution {
             }
         }
 
-        return stack.isEmpty();
+        return stack.isEmpty();//stack이 비어있지 않다면 '('나 ')'처럼 짞이 없는 괄호들이 남아있다는 뜻
     }
 }
