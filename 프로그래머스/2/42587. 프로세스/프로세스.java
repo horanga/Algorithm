@@ -4,7 +4,7 @@ class Solution {
       public static int solution(int[] priorities, int location) {
 
         PriorityQueue<Integer> queue = new PriorityQueue<>(Collections.reverseOrder());
-        int answer = 0;
+        int completedJobCount = 0;
 
 
         for (int i : priorities) {
@@ -16,14 +16,14 @@ class Solution {
             for (int i = 0; i < priorities.length; i++) {
                 if (queue.peek() == priorities[i]) {
                     queue.poll();
-                    answer++;
+                    completedJobCount++;
 
                     if (location == i) {
-                        return answer;
+                        return completedJobCount;
                     }
                 }
             }
         }
-        return answer;
+        return completedJobCount;
     }
 }
