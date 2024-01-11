@@ -7,7 +7,7 @@ public class Solution {
 
         Queue<Integer> bridge = new LinkedList<>();
         int totalWeights = 0;
-        int truckOnBridges = 0;
+        int timeElapsed = 0;
 
         for (int i =0; i<bridge_length; i++){
             bridge.add(0);
@@ -17,14 +17,14 @@ public class Solution {
             while((totalWeights+truck-bridge.peek())>weight){
                 totalWeights -=bridge.remove();
                 bridge.add(0);
-                truckOnBridges++;
+                timeElapsed++;
             }
 totalWeights -=bridge.remove();
             totalWeights +=truck;
             bridge.add(truck);
-            truckOnBridges ++;
+            timeElapsed++;
         }
 
-    return truckOnBridges+bridge_length;
+    return timeElapsed+bridge_length;
     }
 }
