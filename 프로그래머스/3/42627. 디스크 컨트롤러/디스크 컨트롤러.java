@@ -2,14 +2,16 @@ import java.util.Arrays;
 import java.util.PriorityQueue;
 
 class Solution {
-        public static final int START_TIME_INDEX=0;
+        
+    public static final int START_TIME_INDEX=0;
     public static final int PROCESSING_TIME_INDEX=1;
 
-  public static int solution(int[][] jobs){
+    public static int solution(int[][] jobs){
       
       if(jobs==null||jobs.length==0){
           throw new IllegalArgumentException("입력값이 부적절합니다.");
       }
+     
       int elapsedTime=0;
       int timeAfterJobProcessed=0;
       int jobIndex=0;
@@ -35,9 +37,6 @@ class Solution {
               timeAfterJobProcessed +=tmp[PROCESSING_TIME_INDEX];
               countOfProcessedJobs++;
           }
-
-
-
       }
 
       return (int) Math.floor(elapsedTime/jobs.length);
