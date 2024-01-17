@@ -93,4 +93,28 @@ public class Solution {
 
         assertThat(actual).isEqualTo(expected);
     }
+    @Test
+    @DisplayName("큰 데이터도 처리할 수 있다.")
+    void test4(){
+        //given
+        String[] input = new String[10000];
+
+        for(int i =0; i<input.length; i++){
+            input[i]= "I "+i;
+        }
+        input[9999]= "D 1";
+
+
+        int[] expected ={9997, 0};
+        //큐에는 최대 9998까지 숫자가 들어감. 위에서 input[9999]를 D 1으로 변경해줬기 때문.
+        //이에 마지막 D 1 명령어로 9998(최대값)이 사라지고, 그 다음 최대값 9997이 나옴.
+
+        //when
+        int[] actual = solution(input);
+
+        //then
+
+        assertThat(actual).isEqualTo(expected);
+    }
+    
     }
