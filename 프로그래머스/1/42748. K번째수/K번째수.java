@@ -1,28 +1,16 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
+import java.util.Arrays;
 
 class Solution {
  public int[] solution(int[] array, int[][] commands) {
-        List<Integer> answer = new ArrayList<>(commands.length);
+       int[] answer = new int[commands.length];
 
-        for(int[] command :commands){
-            List<Integer> list = new ArrayList<>();
-            int startIndex=command[0]-1;
-            int endIndex =command[1]-1;
+		for (int i = 0; i < commands.length; i++) {
+			int[] temp = Arrays.copyOfRange(array, commands[i][0] - 1, commands[i][1]); 
+            					   // 원본 배열, 복사할 시작인덱스, 복사할 끝인덱스
 
-            for(int i =startIndex; i<=endIndex; i++){
-                list.add(array[i]);
-            }
-
-            Collections.sort(list);
-            int k = list.get(command[2]-1);
-            answer.add(k);
-        }
-
-        return answer.stream()
-                .mapToInt(i->i)
-                .toArray();
-    }
+			Arrays.sort(temp); // 배열 오름차순 정렬
+			answer[i] = temp[commands[i][2] - 1];
+		}
+		return answer;
+	}
 }
