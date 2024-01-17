@@ -1,4 +1,7 @@
 import java.util.Stack;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
+import java.util.stream.IntStream;
 
 public class Solution {
 
@@ -20,9 +23,21 @@ public int[] solution(int[] arr) {
 
         return numberStack.stream()
                 .mapToInt(i -> i).toArray();
+}
+// 스트림 방식
+        
+        public int[] solution(int[] arr) {
 
+        if (arr == null) {
+            return new int[0];
+        }
+
+        return IntStream.range(0, arr.length)
+                .filter(i->i==0|| arr[i]!=arr[i-1])
+                .map(i->arr[i])
+                .toArray();
+        }
 //테스트 코드
-    }
     @Test
     void 정상_작동(){
         //given
