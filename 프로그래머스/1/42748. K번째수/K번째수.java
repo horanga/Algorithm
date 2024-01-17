@@ -2,6 +2,11 @@ import java.util.Arrays;
 
 class Solution {
  public int[] solution(int[] array, int[][] commands) {
+
+	 if(array==null ||commands==null){
+            throw new IllegalArgumentException("입력값은 null일 수 없습니다.");
+        }
+	 
        int[] answer = new int[commands.length];
 
 		for (int i = 0; i < commands.length; i++) {
