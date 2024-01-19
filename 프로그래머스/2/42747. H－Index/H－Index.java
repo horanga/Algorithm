@@ -135,4 +135,39 @@ class Solution {
 
         assertThat(actual).isEqualTo(expected);
     }
+
+//성능 테스트
+       public static void main(String[] args) {
+            int[] ciations= new int[1000];
+
+
+            for(int i=0; i<ciations.length; i++){
+                ciations[i]=i;
+            }
+
+            //예열단계
+            for(int i=0; i<1000; i++){
+                solution(ciations);
+            }
+
+            long startTime = System.nanoTime();
+            solution(ciations);
+            long endTime = System.nanoTime();
+
+            System.out.println("Execution Time: " + (endTime - startTime) + " nanoseconds");
+
+            //for문
+            //Execution Time: 3300 nanoseconds
+            //Execution Time: 3199 nanoseconds
+            //Execution Time: 4400 nanoseconds
+            //Execution Time: 2000 nanoseconds
+
+            //스트림 버전
+            //Execution Time: 22101 nanoseconds
+            //Execution Time: 5299 nanoseconds
+            //Execution Time: 12800 nanoseconds
+            //Execution Time: 20899 nanoseconds
+
+        }
+       
 }
