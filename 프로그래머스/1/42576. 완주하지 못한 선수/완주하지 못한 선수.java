@@ -1,6 +1,9 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Solution {
     
@@ -30,4 +33,25 @@ public class Solution {
         
         return "";
     }
+
+    //스트림버전(성능 안 좋음)
+     public String solution(String[] participant, String[] completion){
+       Map<String, Long> completerFrequencyMap = Arrays.stream(completion)
+               .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));//Fuction.identiy()-->값을 그대로 반환(키로 사용)
+
+       return Arrays.stream(participant)
+               .filter(runner->{
+                   Long frequency = completerFrequencyMap.getOrDefault(runner, 0L);
+                   if(frequency==0L){
+                       return true;
+                   } else {
+                       completerFrequencyMap.put(runner, frequency-1);
+                       return false;
+                   }
+               })
+               .findFirst().
+               orElse("");
+    }
+}
+    
 }
