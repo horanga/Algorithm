@@ -15,6 +15,18 @@ class Solution {
         }
         return maxHIndex;
     }
+
+//스트림버전
+     public int solution(int[] citations) {
+         Arrays.sort(citations);
+
+         return IntStream.rangeClosed(0, citations.length-1)
+                 .map(i->Math.min(citations[i], citations.length - i))
+                 .max()
+                 .orElse(0);
+
+
+    }
 //테스트 케이스
     @DisplayName("논문의 인용수를 계산해서 H-index를 계산할 수 있다.")
     @Test
