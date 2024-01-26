@@ -19,9 +19,24 @@ class Solution {
     return maxLongSide*maxShortSide;
     }
 
+//스트림 버전
+public int solution(int[][] sizes) {
 
+        int maxLongSide = Arrays.stream(sizes)
+                .mapToInt(size->Math.max(size[0], size[1]))
+                .max()
+                .orElse(0);
 
-           @DisplayName("모든 명함 크기를 다 맞출 수 있는 최대 크기의 명함을 만들 수 있다.")
+        int minLongSide =Arrays.stream(sizes)
+                .mapToInt(size->Math.min(size[0], size[1]))
+                .max()
+                .orElse(0);
+
+        return maxLongSide*minLongSide;
+    }
+
+//테스트 케이스
+    @DisplayName("모든 명함 크기를 다 맞출 수 있는 최대 크기의 명함을 만들 수 있다.")
     @Test
     void test1(){
 
