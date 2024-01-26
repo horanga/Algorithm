@@ -109,4 +109,28 @@ public int solution(int[][] sizes) {
         assertThat(actual).isEqualTo(expected);
     }
 
+       //시간 측정
+
+        public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        int[][] size = {{60, 50}, {30, 70}, {60, 30}, {80, 40}};
+
+        for(int i =0; i<10000; i++){
+            solution.solution(size);
+        }
+
+        long start = System.nanoTime();
+        solution.solution(size);
+        long end = System.nanoTime();
+
+        System.out.println((end-start)/1000.0);
+
+        /*스트림버전
+        5.6, 3.1, 2.8, 5.4, 4.1*/
+
+       /* 일반버전
+        1.2, 0.6, 0.9,0.7, 0.8*/
+    }
+
 }
